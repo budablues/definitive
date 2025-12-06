@@ -1,0 +1,57 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-brand">
+          <span class="logo">🎮</span>
+          <div>
+            <h3>PORTAL GAMER PRO</h3>
+            <p>Tu destino definitivo para descubrir los mejores videojuegos indie</p>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">🐦</a>
+          <a href="#" class="social-link">📷</a>
+          <a href="#" class="social-link">🎬</a>
+        </div>
+      </div>
+            <div class="footer-section">
+        <h4>Explorar</h4>
+        <a (click)="onScrollToSection('catalogo', $event)">Catálogo Completo</a>
+        <a (click)="onScrollToSection('destacados', $event)">Juegos Destacados</a>
+        <a (click)="onScrollToSection('categorias', $event)">Categorías</a>
+        <a (click)="onScrollToTop($event)">Volver al Inicio</a>
+      </div>
+
+      
+      <div class="footer-section">
+        <h4>Contacto</h4>
+        <div class="contact-info">
+          <p>📧 info@portalgamerpro.com</p>
+          <p>📱 +1 234 567 890</p>
+          <p>📍 Ciudad Gaming, GD 12345</p>
+        </div>
+        <div class="newsletter">
+          <h5>Newsletter</h5>
+          <p>Recibe las últimas novedades gaming</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Tu email">
+            <button>Suscribirse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; {{ currentYear }} Portal Gamer Pro. Todos los derechos reservados.</p>
+        <div class="footer-links">
+          <a>Política de Privacidad</a>
+          <a>Términos de Servicio</a>
+          <a>Cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

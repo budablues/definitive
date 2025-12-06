@@ -1,0 +1,100 @@
+<div class="catalog-container">
+  <!-- Filtros y Búsqueda - ACTUALIZADO -->
+  <div class="filters-section">
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Buscar juegos..." 
+        [value]="searchTerm"
+        (input)="onSearchInput($event)"
+        class="search-input">
+    </div>
+
+    <div class="categories-filter">
+      <div class="categories-header">
+        <h3>Categorías</h3>
+        <button 
+          class="toggle-categories"
+          (click)="toggleCategoriesExpanded()"
+          [class.expanded]="categoriesExpanded">
+          <span class="toggle-icon">{{ categoriesExpanded ? '−' : '+' }}</span>
+          {{ categoriesExpanded ? 'Menos' : 'Más' }}
+        </button>
+      </div>
+      
+      <div class="categories-list" [class.expanded]="categoriesExpanded">
+        <button 
+          *ngFor="let category of getVisibleCategories()"
+          [class.active]="selectedCategory === category.id"
+          (click)="onCategorySelect(category.id)"
+          class="category-btn">
+          <span class="category-icon">{{category.icon}}</span>
+          <span class="category-name">{{category.name}}</span>
+          <span class="category-count" *ngIf="getCategoryCount(category.id) > 0">
+            ({{getCategoryCount(category.id)}})
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid de Juegos -->
+  <div class="games-section">
+    <div class="games-header">
+      <h2>
+        {{ selectedCategory === 'all' ? 'Todos los Juegos' : 
+            getCategoryName(selectedCategory) }}
+        <span class="games-count">({{filteredGames.length}} juegos)</span>
+      </h2>
+    </div>
+
+    <div class="games-grid">
+      <div *ngFor="let game of filteredGames" class="game-card">
+        <!-- Etiqueta de Oferta -->
+        <div *ngIf="game.discount" class="discount-badge">
+          -{{game.discount}}%
+        </div>
+
+        <!-- Imagen del Juego -->
+        <div class="game-image">
+          <img [src]="game.imageUrl" [alt]="game.name">
+        </div>
+
+        <!-- Información del Juego -->
+        <div class="game-info">
+          <h3 class="game-title">{{game.name}}</h3>
+          <p class="game-description">{{game.description}}</p>
+          
+          <div class="game-categories">
+            <span *ngFor="let category of game.categories" class="game-category">
+              {{category}}
+            </span>
+          </div>
+
+          <div class="game-rating">
+            <span class="stars">⭐ {{game.rating}}</span>
+          </div>
+
+
+          <div class="game-platforms">
+            <span *ngFor="let platform of game.platforms" class="platform">
+              {{platform}}
+            </span>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div class="game-actions">
+          <button class="btn-primary">Ver Detalles</button>
+          <button class="btn-secondary">Añadir al Carrito</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje cuando no hay resultados -->
+    <div *ngIf="filteredGames.length === 0" class="no-results">
+      <h3>No se encontraron juegos</h3>
+      <p>Intenta con otros filtros o términos de búsqueda</p>
+    </div>
+  </div>
+</div>

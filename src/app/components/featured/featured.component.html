@@ -1,0 +1,87 @@
+<section id="destacados" class="featured-section">
+  <div class="container">
+    <h2 class="section-title">Juegos <span class="highlight">Destacados</span></h2>
+    <p class="section-subtitle">Los títulos más populares y mejor valorados por nuestra comunidad</p>
+    
+    <div class="featured-slider">
+      <div class="slider-container">
+        <div 
+          class="slide" 
+          *ngFor="let game of featuredGames; let i = index"
+          [class.active]="i === currentSlide">
+          
+          <div class="slide-content">
+            <div class="game-info">
+              <div class="game-badge featured-badge">⭐ Destacado</div>
+              <h3 class="game-title">{{ game.name }}</h3>
+              <p class="game-description">{{ game.longDescription }}</p>
+              
+              <div class="game-details">
+                <div class="detail">
+                  <strong>Desarrollador:</strong> {{ game.developer }}
+                </div>
+                <div class="detail">
+                  <strong>Lanzamiento:</strong> {{ game.releaseDate | date:'longDate' }}
+                </div>
+                <div class="detail">
+                  <strong>Plataformas:</strong> 
+                  <span class="platforms">
+                    {{ game.platforms.join(', ') }}
+                  </span>
+                </div>
+              </div>
+
+              <div class="game-rating">
+                <div class="stars">
+                  <span *ngFor="let star of [1,2,3,4,5]" 
+                        [class.filled]="star <= game.rating">
+                    ★
+                  </span>
+                </div>
+                <span class="rating-value">{{ game.rating }}/5</span>
+              </div>
+
+              <div class="game-price">
+                <span class="discount-badge" *ngIf="game.discount">
+                  -{{ game.discount }}%
+                </span>
+              </div>
+
+              <div class="game-categories">
+                <span class="category-tag" *ngFor="let category of game.categories">
+                  {{ category }}
+                </span>
+              </div>
+            </div>
+
+            <div class="game-visual">
+              <div class="main-image placeholder-image">
+                <span>{{ game.name }}</span>
+              </div>
+              <div class="image-gallery">
+                <div class="gallery-item placeholder-image" *ngFor="let img of game.gallery; let i = index">
+                  <span>Gallery {{ i + 1 }}</span>
+                </div>
+                <div class="gallery-item placeholder-image" *ngIf="game.gallery.length === 0">
+                  <span>+ Más imágenes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="slider-btn prev" (click)="prevSlide()">‹</button>
+      <button class="slider-btn next" (click)="nextSlide()">›</button>
+      
+      <!-- Indicadores -->
+      <div class="slider-indicators">
+        <button 
+          *ngFor="let game of featuredGames; let i = index"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)">
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

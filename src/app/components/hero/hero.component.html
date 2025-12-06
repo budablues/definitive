@@ -1,0 +1,80 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-background">
+    <div class="hero-overlay"></div>
+  </div>
+  
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 id="hero-title" class="hero-title">
+        Descubre <span class="highlight">Mundos Épicos</span>
+      </h1>
+      <p class="hero-subtitle">
+        Explora nuestra colección curada de los mejores videojuegos indie. 
+        Desde aventuras emocionantes hasta historias conmovedoras, 
+        encuentra tu próxima experiencia gaming favorita.
+      </p>
+      
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Juegos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">7+</span>
+          <span class="stat-label">Categorías</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4.8</span>
+          <span class="stat-label">Rating Promedio</span>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="btn-primary" type="button" aria-label="Explorar catálogo" (click)="onScrollToSection('catalogo')">
+          <span>🎮 Explorar Catálogo</span>
+        </button>
+        <button class="btn-secondary" type="button" aria-label="Ver juegos destacados" (click)="onScrollToSection('destacados')">
+          <span>⭐ Ver Destacados</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="floating-cards">
+        <div class="floating-card card-1">
+          <img
+            src="assets/images/blasphemous.jpeg"
+            width="200" height="280"
+            alt="Blasphemous game cover"
+            aria-hidden="true"
+            class="card-image"
+            loading="lazy" decoding="async"
+            sizes="(max-width: 968px) 0px, 220px"
+          >
+        </div>
+        <div class="floating-card card-2">
+          <img
+            src="assets/images/hollow-knight.jpeg"
+            width="220" height="300"
+            alt=""
+            aria-hidden="true"
+            class="card-image"
+            loading="lazy" decoding="async"
+            sizes="(max-width: 968px) 0px, 220px"
+          >
+        </div>
+        <div class="floating-card card-3">
+          <img
+            src="assets/images/Video Game_ Hades.jpeg"
+            width="220" height="280"
+            alt=""
+            aria-hidden="true"
+            class="card-image"
+            loading="lazy" decoding="async"
+            sizes="(max-width: 968px) 0px, 220px"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+<header [class.scrolled]="isScrolled" [class.menu-open]="isMenuOpen">
+  <nav class="navbar">
+    <!-- Logo -->
+    <div class="nav-brand">
+      <a routerLink="/" (click)="scrollToTop()" class="logo-link">
+        <span class="logo">🕹️ Portal gamer</span>
+      </a>
+    </div>
+
+    <!-- Menú de Navegación -->
+    <div class="nav-links" [class.active]="isMenuOpen">
+      <a routerLink="/" 
+         routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: true}"
+         class="nav-link"
+         (click)="closeMenu()">
+        Inicio
+      </a>
+      <a routerLink="/catalogo" 
+         routerLinkActive="active" 
+         class="nav-link"
+         (click)="closeMenu()">
+        Catálogo
+      </a>
+      <a routerLink="/destacados" 
+         routerLinkActive="active" 
+         class="nav-link"
+         (click)="closeMenu()">
+        Destacados
+      </a>
+      <a routerLink="/contacto" 
+         routerLinkActive="active" 
+         class="nav-link"
+         (click)="closeMenu()">
+        Contactanos
+      </a>
+    </div>
+
+    <!-- Botón Menú Hamburguesa -->
+    <div class="hamburger" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+</header>

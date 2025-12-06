@@ -1,0 +1,196 @@
+<section class="contact-section">
+  <div class="container">
+    <!-- Header simplificado -->
+    <div class="contact-header">
+      <h1 class="contact-title">Contáctanos</h1>
+      <p class="contact-subtitle">
+        ¿Tienes preguntas, sugerencias o necesitas ayuda? Completa el formulario y nos pondremos en contacto contigo.
+      </p>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="contact-main">
+      <!-- Información de contacto -->
+      <div class="contact-info-sidebar">
+        <div class="info-card">
+          <h2 class="info-title">Información de Contacto</h2>
+          
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="method-icon">✉️</div>
+              <div class="method-details">
+                <h3>Correo Electrónico</h3>
+                <a href="mailto:contacto@gamestore.com" class="method-link">
+                  contacto@gamestore.com
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">📞</div>
+              <div class="method-details">
+                <h3>Teléfono</h3>
+                <a href="tel:+15551234567" class="method-link">
+                  +1 (555) 123-4567
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">💬</div>
+              <div class="method-details">
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/15559876543" target="_blank" class="method-link">
+                  +1 (555) 987-6543
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">📍</div>
+              <div class="method-details">
+                <h3>Dirección</h3>
+                <p>Calle Gaming 123, Ciudad Digital</p>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="method-icon">🕐</div>
+              <div class="method-details">
+                <h3>Horario</h3>
+                <p>Lunes a Viernes: 9:00 AM - 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="faq-card">
+          <h3 class="faq-title">¿Por qué contactarnos?</h3>
+          <ul class="faq-list">
+            <li>Soporte técnico para juegos</li>
+            <li>Sugerencias y feedback</li>
+            <li>Reportar problemas</li>
+            <li>Colaboraciones y alianzas</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="contact-form-container">
+        <div class="form-card">
+          <h2 class="form-title">Envíanos un Mensaje</h2>
+          
+          <!-- Mensaje de éxito -->
+          <div *ngIf="submitted" class="success-message">
+            <div class="success-icon">✓</div>
+            <p>{{submittedMessage}}</p>
+            <p class="success-note">Los datos se han guardado automáticamente.</p>
+          </div>
+
+          <!-- Formulario -->
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+            
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="name">Nombre Completo *</label>
+              <input 
+                type="text" 
+                id="name" 
+                formControlName="name"
+                placeholder="Tu nombre completo"
+                [class.error]="name?.invalid && name?.touched"
+                class="form-input">
+              <div *ngIf="name?.invalid && name?.touched" class="error-message">
+                {{getErrorMessage('name')}}
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Correo Electrónico *</label>
+              <input 
+                type="email" 
+                id="email" 
+                formControlName="email"
+                placeholder="tu@email.com"
+                [class.error]="email?.invalid && email?.touched"
+                class="form-input">
+              <div *ngIf="email?.invalid && email?.touched" class="error-message">
+                {{getErrorMessage('email')}}
+              </div>
+            </div>
+
+            <!-- Teléfono -->
+            <div class="form-group">
+              <label for="phone">Teléfono (Opcional)</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                formControlName="phone"
+                placeholder="+1 (555) 123-4567"
+                class="form-input">
+            </div>
+
+            <!-- Asunto -->
+            <div class="form-group">
+              <label for="subject">Asunto *</label>
+              <select 
+                id="subject" 
+                formControlName="subject"
+                class="form-select">
+                <option *ngFor="let subject of subjects" [value]="subject">
+                  {{subject}}
+                </option>
+              </select>
+            </div>
+
+            <!-- Mensaje -->
+            <div class="form-group">
+              <label for="message">Mensaje *</label>
+              <textarea 
+                id="message" 
+                formControlName="message"
+                placeholder="Describe tu consulta, sugerencia o problema..."
+                rows="6"
+                [class.error]="message?.invalid && message?.touched"
+                class="form-textarea"></textarea>
+              <div class="textarea-footer">
+                <div *ngIf="message?.invalid && message?.touched" class="error-message">
+                  {{getErrorMessage('message')}}
+                </div>
+                <div class="char-count">
+                  {{message?.value?.length || 0}}/500 caracteres
+                </div>
+              </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="form-group newsletter-group">
+              <label class="checkbox-label">
+                <input type="checkbox" formControlName="newsletter">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">
+                  Suscribirme al newsletter para recibir novedades y ofertas
+                </span>
+              </label>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="form-group">
+              <button 
+                type="submit" 
+                class="submit-btn"
+                [disabled]="contactForm.invalid || isSubmitting">
+                <span *ngIf="!isSubmitting">Enviar Mensaje</span>
+                <span *ngIf="isSubmitting">Enviando...</span>
+              </button>
+              <p class="form-note">
+                * Campos obligatorios. Los datos se guardarán automáticamente.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
