@@ -37,7 +37,7 @@ header.scrolled {
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #2c5530;
+  color: #64b96c;
 }
 
 /* Menú de Navegación */
@@ -50,7 +50,7 @@ header.scrolled {
 
 .nav-link {
   text-decoration: none;
-  color: #333;
+  color: #a8a6a6;
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
@@ -59,12 +59,12 @@ header.scrolled {
 }
 
 .nav-link:hover {
-  color: #2c5530;
+  color: #5ba763;
   background: rgba(44, 85, 48, 0.1);
 }
 
 .nav-link.active {
-  color: #2c5530;
+  color: #7ada84;
   background: rgba(44, 85, 48, 0.15);
 }
 

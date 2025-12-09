@@ -1,0 +1,131 @@
+<div class="contact-container">
+  <!-- 🔹 Título del formulario -->
+  <h3 class="text-center text-warning fw-bold mb-4">Contáctanos</h3>
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ successMessage }}
+    <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+  </div>
+
+  <!-- 🔹 FORMULARIO -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label class="form-label">Nombre completo *</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="submitted && f['nombre'].invalid"
+        [class.is-valid]="submitted && f['nombre'].valid"
+        formControlName="nombre"
+        placeholder="Ej: Juan Pérez"
+      >
+      <div class="invalid-feedback" *ngIf="submitted && f['nombre'].errors">
+        <span *ngIf="f['nombre'].errors['required']">El nombre es obligatorio.</span>
+        <span *ngIf="f['nombre'].errors['minlength']">Debe tener al menos 2 caracteres.</span>
+        <span *ngIf="f['nombre'].errors['maxlength']">No debe exceder 50 caracteres.</span>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Correo electrónico *</label>
+      <input
+        type="email"
+        class="form-control"
+        [class.is-invalid]="submitted && f['email'].invalid"
+        [class.is-valid]="submitted && f['email'].valid"
+        formControlName="email"
+        placeholder="Ej: ejemplo@correo.com"
+      >
+      <div class="invalid-feedback" *ngIf="submitted && f['email'].errors">
+        <span *ngIf="f['email'].errors['required']">El email es obligatorio.</span>
+        <span *ngIf="f['email'].errors['email']">Ingresa un email válido.</span>
+      </div>
+    </div>
+
+    <!-- Ciudad -->
+    <div class="mb-3">
+      <label class="form-label">Ciudad *</label>
+      <input
+        type="text"
+        class="form-control"
+        [class.is-invalid]="submitted && f['ciudad'].invalid"
+        [class.is-valid]="submitted && f['ciudad'].valid"
+        formControlName="ciudad"
+        placeholder="Ej: Bogotá"
+      >
+      <div class="invalid-feedback" *ngIf="submitted && f['ciudad'].errors">
+        <span *ngIf="f['ciudad'].errors['required']">La ciudad es obligatoria.</span>
+        <span *ngIf="f['ciudad'].errors['minlength']">Debe tener al menos 2 caracteres.</span>
+      </div>
+    </div>
+
+    <!-- Teléfono -->
+    <div class="mb-3">
+      <label class="form-label">Teléfono *</label>
+      <input
+        type="tel"
+        class="form-control"
+        [class.is-invalid]="submitted && f['telefono'].invalid"
+        [class.is-valid]="submitted && f['telefono'].valid"
+        formControlName="telefono"
+        placeholder="Ej: 3001234567"
+      >
+      <div class="invalid-feedback" *ngIf="submitted && f['telefono'].errors">
+        <span *ngIf="f['telefono'].errors['required']">El teléfono es obligatorio.</span>
+        <span *ngIf="f['telefono'].errors['pattern']">Ingresa entre 7 y 15 dígitos.</span>
+      </div>
+    </div>
+
+    <!-- Mensaje -->
+    <div class="mb-3">
+      <label class="form-label">Mensaje *</label>
+      <textarea
+        class="form-control"
+        [class.is-invalid]="submitted && f['mensaje'].invalid"
+        [class.is-valid]="submitted && f['mensaje'].valid"
+        formControlName="mensaje"
+        rows="4"
+        placeholder="Escribe tu mensaje aquí..."
+      ></textarea>
+      <div class="invalid-feedback" *ngIf="submitted && f['mensaje'].errors">
+        <span *ngIf="f['mensaje'].errors['required']">El mensaje es obligatorio.</span>
+        <span *ngIf="f['mensaje'].errors['minlength']">Debe tener al menos 10 caracteres.</span>
+        <span *ngIf="f['mensaje'].errors['maxlength']">No debe exceder 500 caracteres.</span>
+      </div>
+      <small class="text-muted">
+        Caracteres: {{ f['mensaje'].value?.length || 0 }}/500
+      </small>
+    </div>
+
+    <!-- Botones -->
+    <div class="d-flex gap-3 justify-content-center mt-4">
+      <button
+        type="submit"
+        class="btn btn-warning px-4"
+        [disabled]="submitted && contactForm.invalid"
+      >
+        <i class="bi bi-send me-2"></i>
+        {{ submitted ? 'Enviando...' : 'Enviar' }}
+      </button>
+      
+      <button
+        type="button"
+        class="btn btn-outline-secondary px-4"
+        (click)="cancelar()"
+        [disabled]="contactForm.pristine"
+      >
+        <i class="bi bi-x-circle me-2"></i>
+        Cancelar
+      </button>
+    </div>
+
+    <!-- Info de campos obligatorios -->
+    <p class="text-muted small mt-3 text-center">
+      * Campos obligatorios
+    </p>
+  </form>
+</div>

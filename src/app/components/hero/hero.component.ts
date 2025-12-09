@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // ← AGREGAR
+import { RouterModule, RouterLink } from '@angular/router'; // ← AGREGAR
 
 @Component({
   selector: 'app-hero',

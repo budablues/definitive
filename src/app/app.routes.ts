@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HeroComponent } from './components/hero/hero.component';
 import { GameCatalogComponent } from './components/game-catalog/game-catalog.component';
 import { FeaturedComponent } from './components/featured/featured.component';
-import { ContactoComponent } from './components/about/contacto.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 
 // Define las RUTAS de tu aplicación
