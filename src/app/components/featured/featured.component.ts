@@ -21,6 +21,9 @@ export class FeaturedComponent implements OnInit {
     this.featuredGames = this.gameService.getFeaturedGames();
   }
 
+  onImageError(event: any, game: Game) {
+    console.warn(`No se pudo cargar la imagen de ${game.name}: ${game.imageUrl}`);
+  }
   nextSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.featuredGames.length;
   }

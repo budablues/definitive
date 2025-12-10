@@ -55,15 +55,31 @@
             </div>
 
             <div class="game-visual">
-              <div class="main-image placeholder-image">
-                <span>{{ game.name }}</span>
-              </div>
+  <!-- Imagen principal -->
+  <div class="main-image">
+    <img 
+      [src]="game.imageUrl" 
+      [alt]="'Portada de ' + game.name"
+      class="game-cover"
+      loading="lazy"
+      (error)="onImageError($event, game)"
+    >
+  </div>
+  
+              <!-- Galería (usando la misma imagen por ahora) -->
               <div class="image-gallery">
-                <div class="gallery-item placeholder-image" *ngFor="let img of game.gallery; let i = index">
-                  <span>Gallery {{ i + 1 }}</span>
+                <div class="gallery-item">
+                  <img 
+                    [src]="game.imageUrl" 
+                    [alt]="'Vista de ' + game.name"
+                    loading="lazy"
+                  >
                 </div>
-                <div class="gallery-item placeholder-image" *ngIf="game.gallery.length === 0">
-                  <span>+ Más imágenes</span>
+                <div class="gallery-item placeholder">
+                  <span>+</span>
+                </div>
+                <div class="gallery-item placeholder">
+                  <span>+</span>
                 </div>
               </div>
             </div>
