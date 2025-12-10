@@ -1,23 +1,14 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterLink } from '@angular/router'; // ← AGREGAR
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterModule], // ← AGREGAR RouterModule
+  imports: [CommonModule, RouterModule],
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent {
-  @Output() scrollToSection = new EventEmitter<string>();
-
-  onScrollToSection(sectionId: string) {
-    this.scrollToSection.emit(sectionId);
-  }
-
-  // Método para navegar a otras páginas
-  navigateToCatalog() {
-    // Esto ahora se manejará con routerLink en el template
-  }
+  // Los botones usarán routerLink directamente
 }

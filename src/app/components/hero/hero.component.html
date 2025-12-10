@@ -30,12 +30,21 @@
       </div>
 
       <div class="hero-buttons">
-        <button class="btn-primary" type="button" aria-label="Explorar catálogo" (click)="onScrollToSection('catalogo')">
+        <!-- Botón Catálogo - Mismo comportamiento que el header -->
+        <a 
+          routerLink="/catalogo" 
+          class="btn-primary"
+          aria-label="Explorar catálogo">
           <span>🎮 Explorar Catálogo</span>
-        </button>
-        <button class="btn-secondary" type="button" aria-label="Ver juegos destacados" (click)="onScrollToSection('destacados')">
+        </a>
+        
+        <!-- Botón Destacados - Mismo comportamiento que el header -->
+        <a 
+          routerLink="/destacados" 
+          class="btn-secondary"
+          aria-label="Ver juegos destacados">
           <span>⭐ Ver Destacados</span>
-        </button>
+        </a>
       </div>
     </div>
 
@@ -56,7 +65,7 @@
           <img
             src="hollow-knight.jpeg"
             width="220" height="300"
-            alt=""
+            alt="Hollow Knight game cover"
             aria-hidden="true"
             class="card-image"
             loading="lazy" decoding="async"
@@ -67,7 +76,7 @@
           <img
             src="Video Game_ Hades.jpeg"
             width="220" height="280"
-            alt=""
+            alt="Hades game cover"
             aria-hidden="true"
             class="card-image"
             loading="lazy" decoding="async"
